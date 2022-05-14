@@ -9,14 +9,17 @@
     </a>
     <div class="card-body">
       <div class="small text-muted">may 1,2022</div>
-      <h2 class="card-title h4">Post Title</h2>
-      <p class="card-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex aliquam
-        fuga modi! Praesentium, non voluptates voluptatibus tempora mollitia,
-        nulla, id alias temporibus expedita atque quisquam natus! Vitae, quam.
-        Tempora, provident?
-      </p>
+      <h2 class="card-title h4">{{ post.title }}</h2>
+      <p class="card-text">{{ post.body }}</p>
       <p class="btn btn-primary" href="#">Read More -></p>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ['post']
+}
+</script>
+
+
