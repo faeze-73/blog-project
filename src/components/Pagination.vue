@@ -46,12 +46,29 @@ export default {
       type: Number,
       required: true,
     },
+    maxVisibleButtons : {
+      type: Number,
+      required: false,
+      default: 5
+    }
   },
   computed: {
+    startPage() {
+      if(this.currentPage === 1) return 1;
+      if(this.currentPage === this.totalPage) return this.totalPage-4;
+      if(this.currentPage === 2) {
+        return 1;
+      } else {
+          return this.currentPage-2;
+      }
+    },
+    endPage() {
+      return Math.min(this.startPage + this.maxVisibleButtons-1, this.totalPage);
+    },
     pages() {
       let range = [];
 
-      for (let i = 1; i <= this.totalPage; i++) {
+      for (let i = this.startPage; i <= this.endPage; i++) {
         range.push({
           name: i,
           isActive: i === this.currentPage,
