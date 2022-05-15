@@ -1,4 +1,24 @@
 <template>
+  <alerts>
+    <h4 class="alert-heading">Well done!</h4>
+    <p>
+      Aww yeah, you successfully read this important alert message. This example
+      text is going to run a bit longer so that you can see how spacing within
+      an alert works with this kind of content.
+    </p>
+
+    <template #temp>
+      <p class="mb-0">
+        Whenever you need to, be sure to use margin utilities to keep things
+        nice and tidy.
+      </p>
+    </template>
+
+    <template #title="slotProps"> 
+      <h2>{{ slotProps.item }}</h2>
+    </template>
+  </alerts>
+
   <div class="col-lg-8">
     <div v-if="!loading">
       <!--Featured blog post-->
@@ -32,11 +52,13 @@ import Post from "./Post.vue";
 import axios from "axios";
 import _ from "underscore";
 import Pagination from "./Pagination.vue";
+import Alerts from "./Alerts.vue";
 
 export default {
   components: {
     Post,
     Pagination,
+    Alerts,
   },
   data() {
     return {
@@ -45,7 +67,7 @@ export default {
       page: {
         current: 1,
         totalPage: 0,
-      }
+      },
     };
   },
   created() {
@@ -65,7 +87,7 @@ export default {
           let mainPost = this.posts.shift();
           this.posts = [mainPost, ..._.chunk(this.posts, 2)];
           this.page.current = page;
-          this.page.totalPage = parseInt((res.headers['x-total-count']) / 9);
+          this.page.totalPage = parseInt(res.headers["x-total-count"] / 9);
         })
         .catch((err) => console.log(err));
     },

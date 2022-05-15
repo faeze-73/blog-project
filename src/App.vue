@@ -1,33 +1,28 @@
 <template>
-  <my-nav></my-nav>
-  <my-header></my-header>
+  <my-nav :page="currentPage" @changePage="currentPage = $event"></my-nav>
 
-  <!-- Page content -->
-  <div class="container">
-    <div class="row">
-      <!-- Blog entries -->
-      <post-list></post-list>
-      <my-sidebar></my-sidebar>
-    </div>
-  </div>
+  <component :is="currentPage"></component>
 
   <my-footer></my-footer>
 </template>
 
 <script>
-import Header from "./components/layouts/Header.vue";
 import Nav from "./components/layouts/Nav.vue";
-import Sidebar from "./components/layouts/Sidebar.vue";
 import Footer from "./components/layouts/Footer.vue";
-import PostList from "./components/PostList.vue";
+import { defineAsyncComponent } from "vue";
 
 export default {
   components: {
     "my-nav": Nav,
-    "my-header": Header,
-    "my-sidebar": Sidebar,
     "my-footer": Footer,
-    PostList,
+    'home': defineAsyncComponent(() => import("./components/Pages/Home.vue")),
+    'contact': defineAsyncComponent(() => import("./components/Pages/contact.vue")),
+    'about': defineAsyncComponent(() => import("./components/Pages/about.vue")),
+  },
+  data() {
+    return {
+      currentPage: "home",
+    };
   },
 };
 </script>
