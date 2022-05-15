@@ -1,20 +1,20 @@
 <template>
-  <my-nav :page="currentPage" @changePage="currentPage = $event"></my-nav>
+  <the-nav :page="currentPage" @changePage="currentPage = $event"></the-nav>
 
   <component :is="currentPage"></component>
 
-  <my-footer></my-footer>
+  <the-footer></the-footer>
 </template>
 
 <script>
-import Nav from "./components/layouts/Nav.vue";
-import Footer from "./components/layouts/Footer.vue";
+import TheNav from "./components/layouts/TheNav.vue";
+import TheFooter from "./components/layouts/TheFooter.vue";
 import { defineAsyncComponent } from "vue";
 
 export default {
   components: {
-    "my-nav": Nav,
-    "my-footer": Footer,
+    TheNav,
+    TheFooter,
     'home': defineAsyncComponent(() => import("./components/Pages/Home.vue")),
     'contact': defineAsyncComponent(() => import("./components/Pages/contact.vue")),
     'about': defineAsyncComponent(() => import("./components/Pages/about.vue")),

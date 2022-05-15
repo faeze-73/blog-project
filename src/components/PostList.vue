@@ -22,7 +22,7 @@
   <div class="col-lg-8">
     <div v-if="!loading">
       <!--Featured blog post-->
-      <post :post="posts[0]"></post>
+      <post-item :post="posts[0]"></post-item>
 
       <!-- Nested row for non-featured blog post -->
       <div class="row">
@@ -32,7 +32,7 @@
           :key="index"
         >
           <!-- Blog post -->
-          <post v-for="post in postGroup" :key="post.id" :post="post"></post>
+          <post-item v-for="post in postGroup" :key="post.id" :post="post"></post-item>
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import Post from "./Post.vue";
+import PostItem from "./PostItem.vue";
 import axios from "axios";
 import _ from "underscore";
 import Pagination from "./Pagination.vue";
@@ -56,7 +56,7 @@ import Alerts from "./Alerts.vue";
 
 export default {
   components: {
-    Post,
+    PostItem,
     Pagination,
     Alerts,
   },

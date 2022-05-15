@@ -38,10 +38,6 @@ export default {
       type: Number,
       required: true,
     },
-    // prePage: {
-    //   type: Number,
-    //   required: true,
-    // },
     currentPage: {
       type: Number,
       required: true,
