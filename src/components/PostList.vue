@@ -1,5 +1,5 @@
 <template>
-  <alerts>
+  <message-alert>
     <h4 class="alert-heading">Well done!</h4>
     <p>
       Aww yeah, you successfully read this important alert message. This example
@@ -17,7 +17,7 @@
     <template #title="slotProps"> 
       <h2>{{ slotProps.item }}</h2>
     </template>
-  </alerts>
+  </message-alert>
 
   <div class="col-lg-8">
     <div v-if="!loading">
@@ -52,14 +52,14 @@ import PostItem from "./PostItem.vue";
 import axios from "axios";
 import _ from "underscore";
 import Pagination from "./Pagination.vue";
-import Alerts from "./Alerts.vue";
+import MessageAlert from "./MessageAlert.vue";
 
 export default {
-  components: {
+  components : {
     PostItem,
     Pagination,
-    Alerts,
-  },
+    MessageAlert
+},
   data() {
     return {
       posts: null,

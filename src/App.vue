@@ -15,9 +15,9 @@ export default {
   components: {
     TheNav,
     TheFooter,
-    'home': defineAsyncComponent(() => import("./components/Pages/Home.vue")),
-    'contact': defineAsyncComponent(() => import("./components/Pages/contact.vue")),
-    'about': defineAsyncComponent(() => import("./components/Pages/about.vue")),
+    'home': defineAsyncComponent(() => import("./components/pages/HomePage.vue")),
+    'contact': defineAsyncComponent(() => import("./components/pages/ContactPage.vue")),
+    'about': defineAsyncComponent(() => import("./components/pages/AboutPage.vue")),
   },
   data() {
     return {
